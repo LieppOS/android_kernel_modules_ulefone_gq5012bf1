@@ -27,7 +27,8 @@
       "drivers/leds/regulator-vibrator.c",
       "arch/arm64/boot/dts/mediatek/gq5012bf1-board.dts",
       "arch/arm64/boot/dts/mediatek/gq5012bf1-board-pending.dts",
-      "arch/arm64/boot/dts/mediatek/cust_mt6878_msdc.dtsi"
+      "arch/arm64/boot/dts/mediatek/cust_mt6878_msdc.dtsi",
+      "drivers/leds/regulator-vibrator-state.h"
     ],
     "source_paths": [
       "GQ5012BF1 DTS overlays",
@@ -43,15 +44,15 @@
     ]
   },
   "import": {
-    "file_count": 29,
-    "bytes": 256288,
+    "file_count": 30,
+    "bytes": 263194,
     "private_key_files": 0,
     "binary_files": 0,
     "symlinks": 0
   },
   "license_summary": {
     "spdx_counts": {
-      "GPL-2.0": 22,
+      "GPL-2.0": 23,
       "NO-SPDX-HEADER": 3,
       "(GPL-2.0 OR MIT)": 2,
       "GPL-2.0-only": 2
@@ -186,9 +187,16 @@
       "spdx": "GPL-2.0"
     },
     {
+      "path": "drivers/leds/regulator-vibrator-state.h",
+      "sha256": "aa377bf8196488529c321d7006065f3d444888b8a0d4a553c8702a98b58be322",
+      "bytes": 1903,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
       "path": "drivers/leds/regulator-vibrator.c",
-      "sha256": "d6cec1e2d6a04d1fd31f8a128ec365999ac1382539395b53d9873a4c85a5ff44",
-      "bytes": 7791,
+      "sha256": "b9af8e308ca679aac94816a105e977671fbf483f5613f3332a7210e499b58882",
+      "bytes": 12794,
       "mode": "0o644",
       "spdx": "GPL-2.0"
     },
@@ -305,5 +313,17 @@
     ],
     "publication_status": "PARTIAL: safe board sources only; firmware/calibration-bearing drivers withheld",
     "note": "The four withheld drivers remain in the canonical kernel tree for private builds; they are not redistributed until the owner obtains or documents redistribution rights."
-  }
+  },
+  "integration_updates": [
+    {
+      "campaign": "C51C",
+      "canonical_kernel_commit": "af3ecd85d28614c2ad25c6448cd68634d62c6a33",
+      "paths": [
+        "drivers/leds/regulator-vibrator.c",
+        "drivers/leds/regulator-vibrator-state.h"
+      ],
+      "origin": "GPL-2.0 driver modification and independently authored private state policy",
+      "note": "Canonical-first exact synchronization; other paths retain the C48 source snapshot; no independent mirror build claim."
+    }
+  ]
 }

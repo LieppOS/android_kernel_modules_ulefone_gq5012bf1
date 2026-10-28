@@ -5,7 +5,24 @@ Ulefone-specific and board-peripheral kernel source used by the LieppOS Ulefone
 Armor 29 Pro Thermal (GQ5012BF1 / MT6878T) build. It is not a standalone kernel
 build root and it is not a complete device-support drop.
 
-## Source
+## C51C canonical-first integration delta
+
+The original C48 snapshot below remains the base for all other paths. C51C
+synchronizes exactly `drivers/leds/regulator-vibrator.c` and its new private
+`drivers/leds/regulator-vibrator-state.h` from canonical kernel commit
+`af3ecd85d28614c2ad25c6448cd68634d62c6a33`. SOURCE-MANIFEST.json records the per-file
+hashes and scoped integration update; this does not relabel the whole mirror as
+that kernel revision. All other source records and exclusions are preserved.
+
+The driver now owns finite expiry, checked OFF/fault handling and teardown. It
+provides stable timeout ABI v1 attributes, no generic LED-trigger dependency.
+The 5000ms ceiling is provisional software policy, not a thermal rating. Targeted
+build/KCFI/CRC checks were run in the combined kernel only; this mirror is still
+not independently buildable and no physical operation or deployment is approved.
+No source is mirrored back into the canonical owner; the canonical tree is the
+only authority. Both histories/old publication refs are preserved.
+
+## Original C48 source base
 
 | Field | Value |
 | --- | --- |
