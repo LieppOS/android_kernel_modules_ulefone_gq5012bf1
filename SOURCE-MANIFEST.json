@@ -1,0 +1,309 @@
+{
+  "campaign": "C47",
+  "schema": "lieppos.module-source-mirror/1",
+  "repository": "android_kernel_modules_ulefone_gq5012bf1",
+  "description": "# Ulefone GQ5012BF1 board source mirror\n\nThis repository holds a **sanitized, partial source mirror** of the\nUlefone-specific and board-peripheral kernel source used by the LieppOS Ulefone\nArmor 29 Pro Thermal (GQ5012BF1 / MT6878T) build. It is not a standalone kernel\nbuild root and it is not a complete device-support drop.\n\n## Source\n\n| Field | Value |\n| --- | --- |\n| Kernel repository | `android_kernel_ulefone_gq5012bf1` |\n| Source commit | `d0feaaee4484e2fdd5cd87ebbf4c9e273a50b8b0` (C48 publication snapshot) |\n| Source tree | `5b87650c888eab5b14925e7799ec900d4f94f307` |\n| Source base | C44 `ce07b664` + C45 `d02a8942` + C46 `2c896fab` |\n| Reference build | C44 `6.1.115-mt6878-gq5012bf1-c29+` |\n\nThe source commit is a sanitized C48 publication snapshot, not the local C47\nimport commit `7a75e19e`. The C45 panel ABI fix is retained in\n`panel-ky-vtdr6115-dphy-cmd.c`; the C46 MMC fix lives in the MediaTek mirror.\n\n## Included\n\n- Trusted and pending GQ5012BF1 device-tree overlays.\n- `panel-ky-vtdr6115-dphy-cmd.c`, the validated C45 panel implementation.\n- `mtk_panel_ext_stock_abi.h`, retained as evidence of the rejected stock\n  callback layout.\n- YFT touch gesture, Microarray/YFT fingerprint, LN2403 LED, regulator-vibrator,\n  ST21NFC, YFT USB and YFT sensor-devinfo board drivers.\n- `cust_mt6878_msdc.dtsi`, the platform MMC node referenced by the C46 fix.\n\n## Withheld in C48 (license/redistribution review)\n\n| Path | Embedded material |\n| --- | --- |\n| `drivers/input/touchscreen/focaltech_touch/` | 118,972-byte stock FT3680 firmware extracted from a vendor `.ko`; `focaltech_flash.h` also lacks a GPL grant |\n| `drivers/input/touchscreen/hynitron/` | `firmware_cst816t.inc` and `firmware_cst8xx.inc` |\n| `drivers/misc/mediatek/tiny_lcd/` | 1.4 MB vendor logo and LCD init arrays |\n| `drivers/power/supply/sh366003/` | Stock SinoWealth AFI/calibration image |\n\nThese drivers remain in the canonical kernel tree for private builds. They are\nnot published until the owner obtains or documents redistribution rights. The\nmirror is therefore **partial** and must not be described as complete board\nsupport.\n\n## Build relationship\n\nThe combined kernel repository is the canonical build tree. This mirror keeps\nthe original relative paths and license notices for provenance and review; it\nis not compiled independently because Kbuild, generated headers,\n`Module.symvers` and KCFI/modversion inputs are coherent only in the combined\ntree.\n\n## Licensing\n\nGPL-2.0 is the dominant license. `SOURCE-MANIFEST.json` records the SPDX\nidentifier found in each file. Files without an SPDX header remain subject to\ntheir original notices; no relicensing is claimed.\n",
+  "source": {
+    "kernel_repository": "android_kernel_ulefone_gq5012bf1",
+    "source_commit": "d0feaaee4484e2fdd5cd87ebbf4c9e273a50b8b0",
+    "source_tree": "5b87650c888eab5b14925e7799ec900d4f94f307",
+    "source_path": "<workspace>/android/kernel/ulefone/gq5012bf1",
+    "history_preserved": false,
+    "note": "Sanitized C48 publication snapshot. The local C47 import commit 7a75e19e is not published."
+  },
+  "scope": {
+    "included_directories": [
+      "drivers/input/touchscreen/yft_tpd_gesture",
+      "drivers/input/fingerprint/microarray",
+      "drivers/input/fingerprint/yft",
+      "drivers/leds/leds-ln2403",
+      "drivers/misc/mediatek/nfc/st21nfc",
+      "drivers/misc/mediatek/yft_usb",
+      "drivers/misc/mediatek/sensor/2.0/yft_devinfo"
+    ],
+    "included_files": [
+      "drivers/gpu/drm/panel/panel-ky-vtdr6115-dphy-cmd.c",
+      "drivers/gpu/drm/panel/mtk_panel_ext_stock_abi.h",
+      "drivers/leds/regulator-vibrator.c",
+      "arch/arm64/boot/dts/mediatek/gq5012bf1-board.dts",
+      "arch/arm64/boot/dts/mediatek/gq5012bf1-board-pending.dts",
+      "arch/arm64/boot/dts/mediatek/cust_mt6878_msdc.dtsi"
+    ],
+    "source_paths": [
+      "GQ5012BF1 DTS overlays",
+      "panel",
+      "touch",
+      "fingerprint",
+      "LED",
+      "charger",
+      "NFC",
+      "tiny LCD",
+      "YFT USB",
+      "sensor devinfo"
+    ]
+  },
+  "import": {
+    "file_count": 29,
+    "bytes": 256288,
+    "private_key_files": 0,
+    "binary_files": 0,
+    "symlinks": 0
+  },
+  "license_summary": {
+    "spdx_counts": {
+      "GPL-2.0": 22,
+      "NO-SPDX-HEADER": 3,
+      "(GPL-2.0 OR MIT)": 2,
+      "GPL-2.0-only": 2
+    },
+    "files_without_spdx_header": 3
+  },
+  "files": [
+    {
+      "path": "arch/arm64/boot/dts/mediatek/cust_mt6878_msdc.dtsi",
+      "sha256": "5ee441b75de716c314673ab33aa791df10937653dfc4fbf22e9b275ff7d3c122",
+      "bytes": 4340,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "arch/arm64/boot/dts/mediatek/gq5012bf1-board-pending.dts",
+      "sha256": "1b3eedebbf5b02dad432e00a0424c516057166ff7bdd0fe08185bf3ac0598817",
+      "bytes": 14526,
+      "mode": "0o644",
+      "spdx": "(GPL-2.0 OR MIT)"
+    },
+    {
+      "path": "arch/arm64/boot/dts/mediatek/gq5012bf1-board.dts",
+      "sha256": "2c6cccff19f8d5275eb91235b8c812e371dad05e1bf4b5d718db5fff3c4e4e04",
+      "bytes": 6066,
+      "mode": "0o644",
+      "spdx": "(GPL-2.0 OR MIT)"
+    },
+    {
+      "path": "drivers/gpu/drm/panel/mtk_panel_ext_stock_abi.h",
+      "sha256": "fff2e8627ae42d4eaf3474cffcd84ddbb4356a1274dfa81a4a63479bb8a1f600",
+      "bytes": 15978,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/gpu/drm/panel/panel-ky-vtdr6115-dphy-cmd.c",
+      "sha256": "fac51a388000843b59ef7d8d9fa670cc1ec9c4c88ae4be3c32ab28f884a7d3b0",
+      "bytes": 34561,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/fingerprint/microarray/Makefile",
+      "sha256": "5cafa023acd72b8b25c688aa134fc22c7c9549a0e7e9ffaaaccadd7f62e3e6bf",
+      "bytes": 188,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/fingerprint/microarray/ioctl_cmd.h",
+      "sha256": "fe2b723cf7b612190a01db4c83269c3c245a9d869950f0841b2af80743494bca",
+      "bytes": 1713,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/fingerprint/microarray/madev.c",
+      "sha256": "903a95a1383d989aa52bfb11b39211d34a04196827d04f096d0fdb9340ecdbba",
+      "bytes": 14986,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/fingerprint/microarray/madev.h",
+      "sha256": "d64e39c7f15ca03fabc827316a73462d36293a92689ffac77e36c62910385ab4",
+      "bytes": 3436,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/fingerprint/microarray/mtk-settings.c",
+      "sha256": "bcd8e07d64f646d6bce6f1122816b5ca59a09ecde00838bb8a213f2535be1f49",
+      "bytes": 3919,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/fingerprint/microarray/mtk-settings.h",
+      "sha256": "47145fabb1fd3b9409e408fa7659f1e85dc3dfe42be78b534d999e99850e4e18",
+      "bytes": 2943,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/fingerprint/yft/Makefile",
+      "sha256": "40e127b6d8a1863f4dce88e63b1cfbe75a26afa10eb6ae8d3df9370ae385b9d2",
+      "bytes": 82,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/fingerprint/yft/fingerprint.c",
+      "sha256": "22cf1bee70f928bd6364b377af40251e196dbdf1c54c09a8cd338ade4cf444ac",
+      "bytes": 10773,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/touchscreen/yft_tpd_gesture/Makefile",
+      "sha256": "49a9da47164597f340c50a95ef405fec770f2ef9c9bfecbb67c354fe308384ed",
+      "bytes": 321,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/input/touchscreen/yft_tpd_gesture/yft_tpd_gesture.c",
+      "sha256": "7f296ef412ae9d0b090620997bcd3349d2b7350871683db283be4a8164e3f9be",
+      "bytes": 7787,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/leds/leds-ln2403/Makefile",
+      "sha256": "9b685dbddc049b9edf1ffbd5b8a24f707c50318b2774e958272d7697e6a5d751",
+      "bytes": 136,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/leds/leds-ln2403/include/mt-plat/mtk_pwm.h",
+      "sha256": "c5acd1755ffa634498d26e1298dd36caccda55c065633cc65a1c7d57c682ebd2",
+      "bytes": 1320,
+      "mode": "0o644",
+      "spdx": null
+    },
+    {
+      "path": "drivers/leds/leds-ln2403/leds-ln2403.c",
+      "sha256": "8a1200b95c22df156e94cf5c147ed96c7d024e007b25e25f1bf364bea80ce00c",
+      "bytes": 15365,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/leds/regulator-vibrator.c",
+      "sha256": "d6cec1e2d6a04d1fd31f8a128ec365999ac1382539395b53d9873a4c85a5ff44",
+      "bytes": 7791,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/misc/mediatek/nfc/st21nfc/Makefile",
+      "sha256": "b35d8fbc7212248eb61ea96909d08cff1182daf0e80ce471bb05b4b01b2e7480",
+      "bytes": 201,
+      "mode": "0o644",
+      "spdx": null
+    },
+    {
+      "path": "drivers/misc/mediatek/nfc/st21nfc/st21nfc.c",
+      "sha256": "d042f3eda14bfb3b99ea01f0e575a60b766194a7f871750603d19b4c0db80657",
+      "bytes": 44294,
+      "mode": "0o644",
+      "spdx": "GPL-2.0-only"
+    },
+    {
+      "path": "drivers/misc/mediatek/nfc/st21nfc/st21nfc.h",
+      "sha256": "494132147cfc2b12ad889d55ebb891b564b84f0982852a46b3eb2c5ba49ac670",
+      "bytes": 1593,
+      "mode": "0o644",
+      "spdx": "GPL-2.0-only"
+    },
+    {
+      "path": "drivers/misc/mediatek/sensor/2.0/yft_devinfo/Makefile",
+      "sha256": "e9cd61d9a8d0c21f28f6e91b3e0b24cef4f007fab62fcf90802e52217dd96db5",
+      "bytes": 287,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/misc/mediatek/sensor/2.0/yft_devinfo/hf_sensor_io.h",
+      "sha256": "6fad3a99d97ccdd5fef2acec97c68699e560e4e707577612ce6f5c7e3b826b46",
+      "bytes": 1200,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/misc/mediatek/sensor/2.0/yft_devinfo/yft_devinfo.c",
+      "sha256": "7c09ff78b420835d20d4fc2eb2ad59b0987c4c839507c2dcc3c72703541a9afb",
+      "bytes": 48478,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/misc/mediatek/sensor/2.0/yft_devinfo/yft_devinfo.h",
+      "sha256": "f87b0eaa68a4653e3712895864837d2a277d419ab200f424d9b65f7d653e39dd",
+      "bytes": 3473,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/misc/mediatek/yft_usb/Kconfig",
+      "sha256": "120b69e0353d2982e3e8f64958e34eac2d18f0e825617c5f93bafb21bfc7c3fb",
+      "bytes": 318,
+      "mode": "0o644",
+      "spdx": null
+    },
+    {
+      "path": "drivers/misc/mediatek/yft_usb/Makefile",
+      "sha256": "356f5c04c093b2e1136e16bb8bf0a6548d565a5a02a17c39712ac8aef1872eb8",
+      "bytes": 88,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    },
+    {
+      "path": "drivers/misc/mediatek/yft_usb/yft_tiny2c_usb.c",
+      "sha256": "a6f3c19120b26244c871604e995d42d46b61c6fc45e1e418d71b04a5e2686168",
+      "bytes": 10125,
+      "mode": "0o644",
+      "spdx": "GPL-2.0"
+    }
+  ],
+  "excluded": [
+    {
+      "path": "drivers/input/touchscreen/focaltech_touch/",
+      "reason": "embedded-vendor-firmware-and-missing-header-grant"
+    },
+    {
+      "path": "drivers/input/touchscreen/hynitron/",
+      "reason": "embedded-vendor-firmware"
+    },
+    {
+      "path": "drivers/misc/mediatek/tiny_lcd/",
+      "reason": "embedded-vendor-logo-and-init-data"
+    },
+    {
+      "path": "drivers/power/supply/sh366003/",
+      "reason": "embedded-stock-afi-calibration-data"
+    }
+  ],
+  "build_role": {
+    "standalone_build_root": false,
+    "canonical_build_tree": "<workspace>/android/kernel/ulefone/gq5012bf1",
+    "reason": "Kbuild, generated headers, Module.symvers and KCFI/modversion inputs are coherent only in the combined kernel tree."
+  },
+  "generated_at": "2026-10-28T10:36:18Z",
+  "notes": [
+    "Only board-peripheral source; camera/ISP remains with MediaTek.",
+    "C48 publication withholds four drivers that embed vendor firmware, logo or calibration images. The mirror is partial by design, not a complete device-support drop."
+  ],
+  "publication": {
+    "campaign": "C48",
+    "kind": "sanitized-partial-provenance-mirror",
+    "kernel_publication_commit": "d0feaaee4484e2fdd5cd87ebbf4c9e273a50b8b0",
+    "kernel_publication_tree": "5b87650c888eab5b14925e7799ec900d4f94f307",
+    "c47_local_commit": "7a75e19ebf5d7e4b3876c19f4e77cad385dff4f0",
+    "excluded_paths": [
+      "drivers/input/touchscreen/focaltech_touch/",
+      "drivers/input/touchscreen/hynitron/",
+      "drivers/misc/mediatek/tiny_lcd/",
+      "drivers/power/supply/sh366003/"
+    ],
+    "publication_status": "PARTIAL: safe board sources only; firmware/calibration-bearing drivers withheld",
+    "note": "The four withheld drivers remain in the canonical kernel tree for private builds; they are not redistributed until the owner obtains or documents redistribution rights."
+  }
+}
